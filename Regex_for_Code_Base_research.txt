@@ -1,0 +1,98 @@
+Using Regular Expressions in Atom
+
+Searching with regular expressions in Atom is really easy! Just make sure the regex button is selected when searching and turn the case sensitivity button off.
+Marketing DevOps Email Library > Regex for the Email Code Base > Screen Shot 2022-03-13 at 9.25.37 PM.png
+
+Code Standards Use Cases
+
+Searching for Instances where the "appleLinks" Class should be Applied
+
+Looking for Multiple Things at Once (OR condition)
+See MDN documentation on Groups and Ranges for more info
+
+
+General Expressions
+Searching for a String Followed by Something
+Also known as a lookahead, a type of Regex Assertion
+
+x(?=y)
+
+/* EXAMPLE [string to search](?=[string to look for]) */
+
+&copy;(?=&nbsp;)
+/* Looking for instances of "&copy" followed by "&nbsp;" */
+
+
+Searching for a String NOT Followed by Something
+Also known as a negative lookahead, a type of Regex Assertion
+
+x(?!y)
+
+/* EXAMPLE [string to search](?![string to look for]) */
+
+&copy;(?!&nbsp;)
+/* Looking for instances of "&copy" NOT followed by "&nbsp;" */
+
+
+Searching for a String Preceded by Something
+Also known as a lookbehind, a type of Regex Assertion
+
+(?<=y)x
+
+/* EXAMPLE [string to search](?![string to look for]) */
+
+(?<=&nbsp;)&copy;
+/* Looking for instances of "&copy" preceded by "&nbsp;" */
+
+
+Searching for a String NOT Preceded by Something
+Also known as a negative lookbehind, a type of Regex Assertion
+
+(?<!y)x
+
+/* EXAMPLE [string to search](?![string to look for]) */
+
+(?<!&nbsp;)&copy;
+/* Looking for instances of "&copy" NOT preceded by "&nbsp;" */
+
+
+Looking for Multiple Things at Once (OR condition)
+See MDN documentation on Groups and Ranges for more info
+
+(x|y)
+
+/* EXAMPLE ([look for this thing]|[or look for this other thing!]) */
+
+(&nbsp;|&copy;)
+/* Looking for instances of "&copy" or "&nbsp;" */
+
+
+MDO-Specific Use Cases
+Looking for Hex Color Values at the End of a Style Block Missing a Semicolon
+:#\b\w{1,6}\b"
+
+/* 
+
+\b is the word boundary
+w{1,6} looks for a string with a length of 6
+
+*/
+Looking for Hex Color Values with Lowercase Alpha Characters
+#[a-f0-9]{6};
+
+/* 
+
+[a-f] looks for lowercase alpha chars
+[a-f0-9] looks for numeric chars to not exclude hex values that have numbers as well
+{6} looks for a six character string
+
+*/
+
+
+Useful Links and Reference
+About the string data type
+Regex Tester
+Regex Cheatsheet from MDN
+
+
+ 
